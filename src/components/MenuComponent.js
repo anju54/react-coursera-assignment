@@ -1,20 +1,11 @@
 import React, {Component} from 'react';
-import {Card, CardImg, CardImgOverlay, CardText,  CardBody, CardTitle } from 'reactstrap';
 import DishdetailComponent from './DishdetailComponent';
+import {Card, CardImg, CardImgOverlay, CardTitle, Col, Row, Container } from 'reactstrap';
 
 class Menu extends Component{
 
     constructor(props){
         super(props);
-
-        this.state = {
-            selectedDish : null     
-        };
-        
-    }
-
-    onDishSelect(dish){
-        this.setState({ selectedDish:dish });
     }
 
     renderDish(dish){
@@ -33,25 +24,30 @@ class Menu extends Component{
     render(){
         const menu = this.props.dishes.map( (dish) => {
             return(
-                <div key={dish.id} className="col-md-5 m-1">
-                    <Card onClick={() => this.onDishSelect(dish)}>
-                        <CardImg width="30%" src={dish.image} alt="err" />
-                        <CardImgOverlay>
-                            <CardTitle>{dish.name}</CardTitle>
-                            {/* <p>{dish.description}</p> */}
-                        </CardImgOverlay>
-                    </Card>
-                </div>
+               <Col xs="5">
+                <Card onClick={ () => this.props.onClick(dish.id) }>
+                    <CardImg width="30%" src={dish.image} alt="err" />
+                    <CardImgOverlay>
+                        <CardTitle>{dish.name}</CardTitle>
+                        {/* <p>{dish.description}</p> */}
+                    </CardImgOverlay>
+                </Card>
+                </Col>
             );
         });
         
         return(
-            <div className="container">
-                <div className="row">
-                        {menu}
-                </div>
-                {this.renderDish(this.state.selectedDish)}
-            </div>
+            <Container>
+                <Row>
+                    {menu}
+                </Row>
+            </Container>
+            // <div className="container">
+            //     <div className="row">
+            //             {menu}
+            //     </div>
+                
+            // </div>
         );
     }
 }

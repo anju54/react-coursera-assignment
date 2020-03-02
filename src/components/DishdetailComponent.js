@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardImg, CardImgOverlay, CardText,  CardBody, CardTitle } from 'reactstrap';
+import {Card, CardImg, CardText,  CardBody, CardTitle, Row, Col, Container } from 'reactstrap';
 
 class DishdetailComponent extends Component{
 
@@ -20,24 +20,27 @@ class DishdetailComponent extends Component{
 
     render(){
 
-        const { dish } = this.props;
+        const {dish}  = this.props;
+        console.log(this.props);
 
         return (
-            <div className="row">
-              <div className="col-12 col-md-5 m-1">
+          <Container>
+            <Row>
+              <Col xs="5">
                 <Card>
-                  <CardImg top src={dish.image} alt={dish.name} />
+                  <CardImg top src={dish && dish.image} alt={ dish && dish.name} />
                   <CardBody>
-                    <CardTitle>{dish.name}</CardTitle>
-                    <CardText>{dish.description}</CardText>
+                    <CardTitle>{dish &&  dish.name}</CardTitle>
+                    <CardText>{dish &&  dish.description}</CardText>
                   </CardBody>
                 </Card>
-              </div>
-              <div className="col-12 col-md-5 m-1">
+              </Col>
+              {/* <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
-                {this.renderComments(dish.comments)}
-              </div>
-            </div>
+                {this.renderComments(dish &&  dish.comments)}
+              </div> */}
+            </Row>
+            </Container>
           );
     }
 

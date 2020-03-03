@@ -1,10 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
-import { Container } from 'reactstrap';
 import Menu from './MenuComponent';
 import {DISHES} from '../shared/dishes';
 import {COMMENTS} from '../shared/comments'
-import DishdetailComponent from './DishdetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './homeComponent';

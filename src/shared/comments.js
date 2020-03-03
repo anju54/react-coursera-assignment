@@ -84,7 +84,7 @@ export const COMMENTS =
         id: 10,
         dishId: 2,
         rating: 5,
-        comment: "Imagine all the eatables, living in conFusion!",
+        comment: "Enjoy your dessert!",
         author: "John Lemon",
         date: "2012-10-16T17:57:28.556094Z"
     },
@@ -92,7 +92,7 @@ export const COMMENTS =
         id: 11,
         dishId: 2,
         rating: 4,
-        comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+        comment: "You are so lucky coz your are having cheese cake in your dessert!",
         author: "Paul McVites",
         date: "2014-09-05T17:57:28.556094Z"
     },
@@ -140,7 +140,7 @@ export const COMMENTS =
         id: 17,
         dishId: 3,
         rating: 3,
-        comment: "Eat it, just eat it!",
+        comment: "Go on, Eat it, just eat it!",
         author: "Michael Jaikishan",
         date: "2015-02-13T17:57:28.556094Z"
     },
@@ -148,7 +148,7 @@ export const COMMENTS =
         id: 18,
         dishId: 3,
         rating: 4,
-        comment: "Ultimate, Reaching for the stars!",
+        comment: "This is just awesome!",
         author: "Ringo Starry",
         date: "2013-12-02T17:57:28.556094Z"
     },

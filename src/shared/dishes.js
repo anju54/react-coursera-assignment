@@ -6,7 +6,8 @@ export const DISHES =  [
             category : 'mains',
             label : 'Hot',
             price : '4.99',
-            description : 'A unique combination of indian food and italian food'
+            featured: true,
+            description : 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.'
         },
         {
             id : 1,
@@ -15,7 +16,8 @@ export const DISHES =  [
             category : 'appetizer',
             label : '',
             price : '1.99',
-            description : 'Deep fried zucinni coated with ....'
+            featured: false,
+            description : 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce'
         },
         {
             id : 2,
@@ -24,7 +26,8 @@ export const DISHES =  [
             category : 'dessert',
             label : 'Hot',
             price : '2.99',
-            description : 'A Deletable semi sweet......'
+            featured: false,
+            description : 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
 
         },
         {
@@ -34,6 +37,7 @@ export const DISHES =  [
             category : 'SouthIndian',
             label : '',
             price : '1.99',
+            featured: false,
             description : 'A quintessential ConFusion experiance, is it vada or is it a donut?'
         }
 ];

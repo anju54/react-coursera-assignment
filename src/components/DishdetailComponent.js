@@ -1,10 +1,14 @@
 import React from 'react';
 import {Card, CardImg, CardText,  CardBody, CardTitle, Row, Col, Container } from 'reactstrap';
+import { Link } from 'react-router-dom'; 
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 /**
  * This is implemented using functional components
  */
 function RenderDish({dish}){
+
+  console.log(dish);
     
   return (
     <Col xs="5">
@@ -40,6 +44,16 @@ const DishdetailComponent = (props) =>{
 
   return (
     <Container>
+      <Row>
+        <Breadcrumb>
+            <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+            <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+        </Breadcrumb>
+        <div className="col-12">
+            <h3>{props.dish.name}</h3>
+            <hr />
+        </div>
+      </Row>
       <Row>
         <RenderDish dish={props.dish} />
         <div className="col-12 col-md-5 m-1">

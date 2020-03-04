@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Breadcrumb, BreadcrumbItem, Row,
- Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+ Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
@@ -16,11 +16,18 @@ class Contact extends Component{
       email : '',
       agree : '',
       contactType : '',
-      message : ''
+      message : '',
+      touched : {
+        firstName : false,
+        lastName : false,
+        telName : false,
+        email : false
+      }
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
 
   }
 
@@ -43,7 +50,39 @@ class Contact extends Component{
 
   }
 
+  handleBlur = (field) => (evt) => {
+
+    this.setState({
+      touched : { ...this.state.touched, [field]: true}
+    })
+
+  };
+
+  validate(firstName, lastName, email, telName){
+
+    const errors = {
+      firstName : '',
+      lastName  : '',
+      telNum : '',
+      email : '',
+    }
+
+    if(this.state.touched.firstName && firstName.length < 3)
+      errors.firstName = 'First name should be greater then equal to three';
+    else if(this.state.touched.firstName && firstName.length < 10)
+      errors.firstName = 'First name should be less then 10 chars';
+
+    if(this.state.touched.lastName && lastName.length < 3)
+      errors.lastName = 'Last name should be greater then equal to three';
+    else if(this.state.touched.lastName && lastName.length < 10)
+      errors.lastName = 'Last name should be less then 10 chars';
+
+    return errors;
+  }
+
   render(){
+
+    const errors = this.validate(this.state.firstName, this.state.lastName);
 
     return (
       <div className="container">
@@ -114,8 +153,12 @@ class Contact extends Component{
                 <Label htmlFor="firstName" md={2}>First Name</Label>
                 <Col md={10}>
                   <Input type="text" id="firstName" name="firstName" placeholder="First Name" 
+                     valid={errors.firstName === ''}
+                     invalid={errors.firstName !== ''}
                      value={this.state.firstName}
-                     onChange={this.handleInputChange} />
+                     onChange={this.handleInputChange} 
+                     onBlur={this.handleBlur('firstName')} />
+                  <FormFeedback>{errors.firstName}</FormFeedback>
                 </Col>
               </FormGroup>
               <FormGroup row>
@@ -123,7 +166,10 @@ class Contact extends Component{
                 <Col md={10}>
                   <Input type="text" id="lastName" name="lastName" placeholder="Last Name" 
                      value={this.state.lastName} 
+                     valid={errors.lastName === ''}
+                     invalid={errors.lastName !== ''}
                      onChange={this.handleInputChange} />
+                  <FormFeedback>{errors.lastName}</FormFeedback>
                 </Col>
               </FormGroup>
               <FormGroup row>

@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* css related to login model */
+.fade{
+  opacity: 1;
+}
+
+#loginModel{
+  padding-top: 80px;
+}
+

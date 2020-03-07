@@ -14,80 +14,15 @@ class Contact extends Component{
   constructor(props){
     super(props);
 
-    // this.state = {
-    //   firstName : '',
-    //   lastName  : '',
-    //   telNum : '',
-    //   email : '',
-    //   agree : '',
-    //   contactType : '',
-    //   message : '',
-    //   touched : {
-    //     firstName : false,
-    //     lastName : false,
-    //     telName : false,
-    //     email : false
-    //   }
-    // }
-
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleInputChange = this.handleInputChange.bind(this);
-    // this.handleBlur = this.handleBlur.bind(this);
-
   }
-
-  // handleInputChange(event){
-
-  //   const target = event.target;
-  //   const value = target.type === 'checkbox' ? target.checked : target.value;
-  //   const name = target.name;
-
-  //   this.setState({
-  //     [name] : value
-  //   });
-
-  // }
 
   handleSubmit(values){
     console.log("Current state is: " +JSON.stringify(values));
     alert("Current state is: " +JSON.stringify(values));
-    
-
   }
 
-  // handleBlur = (field) => (evt) => {
-
-  //   this.setState({
-  //     touched : { ...this.state.touched, [field]: true}
-  //   })
-
-  // };
-
-  // validate(firstName, lastName, email, telName){
-
-  //   const errors = {
-  //     firstName : '',
-  //     lastName  : '',
-  //     telNum : '',
-  //     email : '',
-  //   }
-
-  //   if(this.state.touched.firstName && firstName.length < 3)
-  //     errors.firstName = 'First name should be greater then equal to three';
-  //   else if(this.state.touched.firstName && firstName.length < 10)
-  //     errors.firstName = 'First name should be less then 10 chars';
-
-  //   if(this.state.touched.lastName && lastName.length < 3)
-  //     errors.lastName = 'Last name should be greater then equal to three';
-  //   else if(this.state.touched.lastName && lastName.length < 10)
-  //     errors.lastName = 'Last name should be less then 10 chars';
-
-  //   return errors;
-  // }
-
   render(){
-
-    //const errors = this.validate(this.state.firstName, this.state.lastName);
 
     return (
       <div className="container">
@@ -128,21 +63,13 @@ class Contact extends Component{
           </div>
           <div className="col-12 col-sm-11 offset-sm-1">
             <div className="btn-group" role="group">
-              <a
-                role="button"
-                className="btn btn-primary"
-                href="tel:+85212345678"
-              >
+              <a role="button" className="btn btn-primary" href="tel:+85212345678">
                 <i className="fa fa-phone" /> Call
               </a>
               <a role="button" className="btn btn-info">
                 <i className="fa fa-skype" /> Skype
               </a>
-              <a
-                role="button"
-                className="btn btn-success"
-                href="mailto:confusion@food.net"
-              >
+              <a role="button" className="btn btn-success" href="mailto:confusion@food.net">
                 <i className="fa fa-envelope-o" /> Email
               </a>
             </div>
@@ -171,7 +98,6 @@ class Contact extends Component{
                         maxLength : 'Must be < 15'
                       }}
                   />
-                  {/* <FormFeedback>{errors.firstName}</FormFeedback> */}
                 </Col>
               </Row>
               <Row className="form-group">
@@ -188,9 +114,7 @@ class Contact extends Component{
                         required : 'Reqioured',
                         minLength : 'Must be > 2',
                         maxLength : 'Must be < 15'
-                      }}
-                  />
-                  {/* <FormFeedback>{errors.lastName}</FormFeedback> */}
+                  }}/>
                 </Col>
               </Row>
               <Row className="form-group">
@@ -211,8 +135,7 @@ class Contact extends Component{
                         minLength : 'Must be > 2',
                         maxLength : 'Must be < 15',
                         isNumber : 'It must be a number'
-                      }}
-                  />
+                }}/>
               </Row>
               <Row className="form-group">
                 <Label htmlFor="email" md={2}>email</Label>
@@ -228,8 +151,7 @@ class Contact extends Component{
                     messages={{
                       required : 'Reqioured',
                       validEmail : 'Invalid email address'
-                    }}
-                    />
+                  }}/>   
                 </Col>
               </Row>
               <Row className="form-group">
@@ -258,7 +180,6 @@ class Contact extends Component{
                      />
                 </Col>
               </Row>
-              
                 <Row className="form-group">
                   <Col md={{size:10, offset:2}}>
                     <Button type="submit" color="primary">
@@ -266,15 +187,12 @@ class Contact extends Component{
                     </Button>
                   </Col>
                 </Row>
-              
             </LocalForm>
           </div>
         </div>
       </div>
     );
-
   }
-
 }
 
 export default Contact;

@@ -4,6 +4,11 @@ import { Breadcrumb, BreadcrumbItem, Row,
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length<=len);
+const minLength = (len) => (val) => !(val) || (val.length>=len);
+const isNumber = (val) => !isNaN(Number(val));
+const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 class Contact extends Component{
 
   constructor(props){
@@ -154,7 +159,18 @@ class Contact extends Component{
                 <Col md={10}>
                   <Control.text model=".firstName" id="firstName" name="firstName" placeholder="First Name" 
                      className="form-control"
+                     validators={{
+                       required, minLength:minLength(3), maxLength:maxLength(15)
+                     }}
                      />
+                  <Errors 
+                      className="text-danger" model=".firstName" show="touched"
+                      messages={{
+                        required : 'Reqioured',
+                        minLength : 'Must be > 2',
+                        maxLength : 'Must be < 15'
+                      }}
+                  />
                   {/* <FormFeedback>{errors.firstName}</FormFeedback> */}
                 </Col>
               </Row>
@@ -162,7 +178,18 @@ class Contact extends Component{
                 <Label htmlFor="lastName" md={2}>last Name</Label>
                 <Col md={10}>
                   <Control.text model=".lastName" id="lastName" name="lastName" placeholder="Last Name" 
-                    className="form-control"  />
+                    className="form-control"  
+                    validators={{
+                      required, minLength:minLength(3), maxLength:maxLength(15)
+                    }}/>
+                  <Errors 
+                      className="text-danger" model=".lastName" show="touched"
+                      messages={{
+                        required : 'Reqioured',
+                        minLength : 'Must be > 2',
+                        maxLength : 'Must be < 15'
+                      }}
+                  />
                   {/* <FormFeedback>{errors.lastName}</FormFeedback> */}
                 </Col>
               </Row>
@@ -171,15 +198,38 @@ class Contact extends Component{
                 <Col md={10}>
                   <Control.text model=".telName" id="telName" name="telName" placeholder="Tel number" 
                      className="form-control"
-                     />
+                     validators={{
+                      required, minLength:minLength(3), maxLength:maxLength(15),
+                      isNumber
+                    }}/>
+                    
                 </Col>
+                <Errors 
+                      className="text-danger" model=".telName" show="touched"
+                      messages={{
+                        required : 'Reqioured',
+                        minLength : 'Must be > 2',
+                        maxLength : 'Must be < 15',
+                        isNumber : 'It must be a number'
+                      }}
+                  />
               </Row>
               <Row className="form-group">
                 <Label htmlFor="email" md={2}>email</Label>
                 <Col md={10}>
                   <Control.text model=".email" id="email" name="email" placeholder="email" 
                      className="form-control"
+                     validators={{
+                      required,  isNumber
+                    }}
                       />
+                  <Errors
+                    className="text-danger" model=".email" show="touched"
+                    messages={{
+                      required : 'Reqioured',
+                      validEmail : 'Invalid email address'
+                    }}
+                    />
                 </Col>
               </Row>
               <Row className="form-group">
